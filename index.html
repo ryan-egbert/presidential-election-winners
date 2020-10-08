@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>HW03</title>
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js"></script>
+        <script src="main.js"></script>
+        <style>
+            body {
+                text-align: center;
+                font-family: Arial, Helvetica, sans-serif
+            }
+            #svg {
+                width: 70%;
+                height: 70%;
+            }
+            .axis {
+                stroke: black;
+                stroke-width: 2;
+                fill: none;
+            }
+            .area-graph {
+                stroke: blue;
+                fill: blue;
+            }
+            .tick {
+                stroke: black;
+            }
+            .tick-text {
+                font: 10px sans-serif;
+            }
+            .axis-label {
+                font: 25px sans-serif;
+            }
+            .rect {
+                stroke: black;
+            }
+            .sub-buttons {
+                margin-top: 20px;
+            }
+            .invisible {
+                display: none;
+            }
+            .invisible.active {
+                display: block;
+            }
+            .b {
+                background-color: white;
+                border: 2px solid #06961d;
+                color: black;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                border-radius: 10px;
+            }
+            .b:hover {
+                background-color: #8ecf99;
+            }
+            .b:focus {
+                outline: none;
+            }
+            .b.selected {
+                background-color: #06961d;
+            }
+            .b.selected-main {
+                background-color: #06961d;
+            }
+            .b.selected:hover {
+                background-color: #8ecf99;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CS 5890 - Homework #4</h1>
+        <div id="dataset-svg">
+            <svg id="svg" width="960" height="500"></svg>
+        </div>
+    </body>
+</html>
