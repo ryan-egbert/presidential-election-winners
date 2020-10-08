@@ -16,29 +16,28 @@ d3.csv("state_results.csv", data => {
     return data;
     }).then(data => {
         // let json = await d3.json("data/us-states.json");
-        d3.json("states.json").then(function(json) {
-            // console.log(json.states[12])
+        d3.json("us-states.json").then(function(json) {
+            // console.log(json.features[12])
             for (let i = 0; i < data.length; i++) {
                 let dataState = data[i].state;
                 let dataRep = data[i].rep_wins;
                 let dataDem = data[i].dem_wins;
-                let dataOth = data[i].oth_wins;
         
                 // console.log(dataState)
         
-                for (let j = 0; j < json.states.length; j++) {
-                    let jsonState = json.states[j].name;
+                for (let j = 0; j < json.features.length; j++) {
+                    let jsonState = json.features[j].properties.names;
                     // console.log(j)
         
                     if (dataState == jsonState) {
                         if (dataRep > dataDem) {
-                            json.states[j].party = "red";
+                            json.features[j].properties.party = "red";
                         }
                         else if (dataDem > dataRep) {
-                            json.states[j].party = "blue";
+                            json.features[j].properties.party = "blue";
                         }
                         else {
-                            json.states[j].party = "green";
+                            json.features[j].properties.party = "green";
                         }
                         break;
                     }
@@ -46,14 +45,14 @@ d3.csv("state_results.csv", data => {
             }
 
             console.log("adding to path")
-            console.log(json.states)
+            console.log(json.features)
             d3.select("#map").selectAll("path")
-                .data(json.states)
+                .data(json.features)
                 .enter()
                 .append("path")
                 .attr("d", path)
                 .style("fill", d => {
-                    return d.party;
+                    return d.properties.party;
             });
         });
 });
