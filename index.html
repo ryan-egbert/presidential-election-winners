@@ -71,10 +71,11 @@
             }
         </style>
     </head>
-    <body>
+    <body onload="init()">
         <h1>CS 5890 - Homework #4</h1>
+        <select id="dropdown" onchange="changeYear()"></select>
         <div id="dataset-svg">
-            <svg id="svg" width="960" height="500">
+            <svg id="svg" width="500" height="300">
                 <g id="map"></g>
             </svg>
         </div>
