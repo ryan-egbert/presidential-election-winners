@@ -12,62 +12,12 @@
             }
             #svg {
                 width: 75%;
-                height: 70%;
+                height: 80%;
             }
             .axis {
                 stroke: black;
                 stroke-width: 2;
                 fill: none;
-            }
-            .area-graph {
-                stroke: blue;
-                fill: blue;
-            }
-            .tick {
-                stroke: black;
-            }
-            .tick-text {
-                font: 10px sans-serif;
-            }
-            .axis-label {
-                font: 25px sans-serif;
-            }
-            .rect {
-                stroke: black;
-            }
-            .sub-buttons {
-                margin-top: 20px;
-            }
-            .invisible {
-                display: none;
-            }
-            .invisible.active {
-                display: block;
-            }
-            .b {
-                background-color: white;
-                border: 2px solid #06961d;
-                color: black;
-                padding: 15px 32px;
-                text-align: center;
-                text-decoration: none;
-                font-size: 16px;
-                border-radius: 10px;
-            }
-            .b:hover {
-                background-color: #8ecf99;
-            }
-            .b:focus {
-                outline: none;
-            }
-            .b.selected {
-                background-color: #06961d;
-            }
-            .b.selected-main {
-                background-color: #06961d;
-            }
-            .b.selected:hover {
-                background-color: #8ecf99;
             }
         </style>
     </head>
@@ -78,6 +28,7 @@
             <svg id="svg" width="500" height="300">
                 <g id="map"></g>
                 <g id="bars"></g>
+                <g id="info"></g>
             </svg>
         </div>
     </body>

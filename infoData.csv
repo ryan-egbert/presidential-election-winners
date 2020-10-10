@@ -1,0 +1,31 @@
+year,population,dem,rep,other,winner,popVote,dPop,rPop,oPop,dElectoral,rElectoral,oElectoral
+1900,76094000,William Jennings Bryan,William McKinley,None,R,R,6370932,7228864,0,155,292,0
+1904,82166000,Alton B. Parker,Theodore Roosevelt,None,R,R,5083880,7630457,0,140,336,0
+1908,88710000,William Jennings Bryan,William Howard Taft,None,R,R,6408984,7678295,0,162,321,0
+1912,95335000,Woodrow Wilson,William Howard Taft,Theodore Roosevelt (Bull Moose Party),D,D,6296284,3486242,4122721,435,8,88
+1916,101961000,Woodrow Wilson,Charles Evans Hughes,None,D,D,9126868,8548728,0,277,254,0
+1920,106461000,James M. Cox,Warren G. Harding,None,R,R,9139661,16144093,0,127,404,0
+1924,114109000,John W. Davis,Calvin Coolidge,Robert M. La Follette (Progressive Party),R,R,8386242,15723789,4831706,136,382,13
+1928,120509000,Al Smith,Herbert Hoover,None,R,R,15015464,21427123,0,87,444,0
+1932,124840471,Franklin D. Roosevelt,Herbert Hoover,None,D,D,22821277,15761254,0,472,59,0
+1936,128053180,Franklin D. Roosevelt,Alf Landon,None,D,D,27747636,16679543,0,523,8,0
+1940,132122446,Franklin D. Roosevelt,Wendell Willkie,None,D,D,27313945,22347744,0,449,82,0
+1944,138397345,Franklin D. Roosevelt,Thomas E. Dewey,None,D,D,25612916,22017929,0,432,99,0
+1948,146631302,Harry S. Truman,Thomas E. Dewey,Strom Thurmond (Dixiecrat Party),D,D,24179347,21991292,1175930,303,189,39
+1952,157552740,Adlai Stevenson II,Dwight D. Eisenhower,None,R,R,27375090,34075529,0,89,442,0
+1956,168903031,Adlai Stevenson II,Dwight D. Eisenhower,None,R,R,26028028,35579180,0,73,457,0
+1960,180671158,John F. Kennedy,Richard Nixon,None,D,D,34220984,34108157,0,303,219,0
+1964,191888791,Lyndon B. Johnson,Barry Goldwater,None,D,D,43127041,27175754,0,486,52,0
+1968,200706052,Hubert Humphrey,Richard Nixon,George Wallace (Independent),R,R,31271839,31783783,9901118,191,301,46
+1972,209896021,George McGovern,Richard Nixon,None,R,R,29173222,47168710,0,17,520,0
+1976,218035164,Jimmy Carter,Gerald Ford,None,D,D,40831881,39148634,0,297,240,0
+1980,227224681,Jimmy Carter,Ronald Reagan,None,R,R,35480115,43903230,0,49,489,0
+1984,235824902,Walter Mondale,Ronald Reagan,None,R,R,37577352,54455472,0,13,525,0
+1988,244498982,Michael Dukakis,George H.W. Bush,None,R,R,41809074,48886597,0,111,426,0
+1992,256514224,Bill Clinton,George H.W. Bush,None,D,D,44909889,39104550,0,370,168,0
+1996,269394284,Bill Clinton,Bob Dole,None,D,D,47401185,39197469,0,379,159,0
+2000,282162411,Al Gore,George W. Bush,None,R,D,50999897,50456002,0,266,271,0
+2004,292805298,John Kerry,George W. Bush,None,R,R,59028444,62040610,0,251,286,0
+2008,304093966,Barack Obama,John McCain,None,D,D,69498516,59948323,0,365,173,0
+2012,314102623,Barack Obama,Mitt Romney,None,D,D,65915795,60933504,0,332,206,0
+2016,323889854,Hilary Clinton,Donald Trump,None,R,D,65853514,62984828,0,227,304,0

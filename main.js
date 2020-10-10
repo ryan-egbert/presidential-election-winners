@@ -22,11 +22,93 @@ function init() {
             .text(i)
     }
     initBars();
+    initInfo();
     updateMap(1900);
-    
     updateBars(1900);
+    updateInfo(1900);
 }
-
+function initInfo(){
+    d3.select("#info")
+    .append("rect")
+    .attr("y", "550")
+    .attr("x", "120")
+    .attr("height", "200")
+    .attr("width", "1150")
+    .style("stroke", "black")
+    .style("fill", "transparent")
+    var info = d3.select("#info")
+    info.append("text")
+    .text("")
+    .attr("id", "yearText")
+    .attr("x", "575")
+    .attr("y", "570")
+    info.append("text")
+    .text("")
+    .attr("id", "popText")
+    .attr("x", "125")
+    .attr("y", "605")
+    info.append("text")
+    .text("")
+    .attr("id", "totalVotesText")
+    .attr("x", "125")
+    .attr("y", "645")
+    info.append("text")
+    .text("")
+    .attr("id", "demText")
+    .attr("x", "785")
+    .attr("y", "605")
+    info.append("text")
+    .text("")
+    .attr("id", "repText")
+    .attr("x", "785")
+    .attr("y", "605")
+    info.append("text")
+    .text("")
+    .attr("id", "otherText")
+    .attr("x", "785")
+    .attr("y", "605")
+    info.append("text")
+    .text("winnerText")
+    .attr("id", "winnerText")
+    .attr("x", "125")
+    .attr("y", "685")
+    info.append("text")
+    .text("")
+    .attr("id", "popVoteText")
+    .attr("x", "125")
+    .attr("y", "725")
+    info.append("text")
+    .text("")
+    .attr("id", "dPopText")
+    .attr("x", "785")
+    .attr("y", "645")
+    info.append("text")
+    .text("")
+    .attr("id", "rPopText")
+    .attr("x", "785")
+    .attr("y", "645")
+    info.append("text")
+    .text("")
+    .attr("id", "oPopText")
+    .attr("x", "785")
+    .attr("y", "645")
+    info.append("text")
+    .text("")
+    .attr("id", "dElectoralText")
+    .attr("x", "785")
+    .attr("y", "685")
+    info.append("text")
+    .text("")
+    .attr("id", "rElectoralText")
+    .attr("x", "785")
+    .attr("y", "685")
+    info.append("text")
+    .text("")
+    .attr("id", "oElectoralText")
+    .attr("x", "785")
+    .attr("y", "685")
+    
+}
 function initBars(){
     d3.select("#bars")
     .append("line")
@@ -170,10 +252,13 @@ function updateBars(year){
             return 500 - ((d / 50) * 500)
         })
         .attr("width", "100")
+        
         .style("fill", function(d) {
          return colors[totals.indexOf(d)]
         })
         .style("stroke", "black")
+        
+
         d3.select("#bars").selectAll("#bar")
         .transition()
         .duration(1000)
@@ -183,13 +268,96 @@ function updateBars(year){
         .attr("y", function(d) {
             return 500 - ((d / 50) * 500)
         })
-        console.log(`Year: ${year}, R:${totals[0]}, D:${totals[1]}, O:${totals[2]}, NA:${totals[3]}`)
+        d3.select("#bars").selectAll("#bar")
+            .on("click", function(d) {
+                curYear = document.getElementById("dropdown").value;
+                d3.selectAll("#bar").style("stroke", "black")
+                .style("stroke-width", "1px")
+            
+                const color = colors[totals.indexOf(d)]
+                if (color == "red"){
+                    d3.select(this).style("stroke", "gold")
+                    .style("stroke-width", "3px")
+                    updateInfo(curYear, "R")
+                }
+                else if (color == "blue"){
+                    d3.select(this).style("stroke", "gold")
+                    .style("stroke-width", "3px")
+                    updateInfo(curYear, "D")
+                }
+                else if (color == "green"){
+                    d3.select(this).style("stroke", "gold")
+                    .style("stroke-width", "3px")
+                    updateInfo(curYear, "O")
+                }
+                else {
+                    updateInfo(curYear)
+                }
+                // grey n/a bar represents states that didn't exist yet, just clears the specific text on click
+            })
+        
+        
     })
 }
-
+function updateInfo(year, selectedBar = null){
+    d3.csv("infoData.csv").then(data =>{
+        const election = data.find(election => election.year == year)
+        var winner
+        var loser
+        var loserParty
+        if (election.winner == "R"){
+            winner = election.rep
+            loser = election.dem
+            loserParty = "D"
+        }
+        else {
+            winner = election.dem
+            loser = election.rep
+            loserParty = "R"
+        }
+        var info = d3.select("#info")
+        info.selectAll("text").text("")
+        info.select("#yearText")
+        .text(`${election.year} Presidential Election`)
+        info.select("#popText")
+        .text(`Total United States Population: ${Number(election.population).toLocaleString('en-US')}`)
+        info.select("#totalVotesText")
+        .text(`Total Number of Votes Cast: ${(Number(election.dPop) + Number(election.rPop) + Number(election.oPop)).toLocaleString('en-US')}`)
+        info.select("#winnerText")
+        .text(`Winner: ${winner} (${election.winner})`)
+        if (election.winner != election.popVote){
+            info.select("#popVoteText")
+            .text(`Popular Vote Winner: ${loser} (${loserParty})`)
+        }
+        if (selectedBar != null){
+            if (selectedBar == "R"){
+                info.select("#repText").text(`Republican Candidate: ${election.rep}`)
+                info.select("#rElectoralText").text(`Electoral Votes Received: ${election.rElectoral}`)
+                info.select("#rPopText").text(`Popular Vote Received: ${Number(election.rPop).toLocaleString('en-US')}`)
+            }
+            else if (selectedBar == "D"){
+                info.select("#demText").text(`Democratic Candidate: ${election.dem}`)
+                info.select("#dElectoralText").text(`Electoral Votes Received: ${election.dElectoral}`)
+                info.select("#dPopText").text(`Popular Vote Received: ${Number(election.dPop).toLocaleString('en-US')}`)
+            }
+            else if (selectedBar == "O"){
+                info.select("#otherText").text(`Third-Party Candidate: ${election.other}`)
+                info.select("#oElectoralText").text(`Electoral Votes Received: ${election.oElectoral}`)
+                info.select("#oPopText").text(`Popular Vote Received: ${Number(election.oPop).toLocaleString('en-US')}`)
+            }
+            
+        }
+        else {
+            d3.selectAll("#bar")
+            .style("stroke", "black")
+            .style("stroke-width", "1px")
+        }
+    })
+}
 
 function changeYear() {
     year = document.getElementById("dropdown").value;
     updateMap(year);
-    updateBars(year)
+    updateBars(year);
+    updateInfo(year);
 }
